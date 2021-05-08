@@ -24,6 +24,7 @@ import { MainTypeMeComponent } from './type-me/main-type-me/main-type-me.compone
     ItemAudioCallComponent,
     MainAudioCallComponent,
     GameFirstModalComponent,
+    GameResultsModalComponent,
     SavannaChildComponent,
     TypeMeComponent,
     ItemTypeMeComponent,

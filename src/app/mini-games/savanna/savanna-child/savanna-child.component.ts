@@ -35,6 +35,7 @@ export class SavannaChildComponent implements OnInit, OnDestroy {
       answerTranslate: '',
     },
     audio: '',
+    id: '',
   };
   // the buttons should be disabled after first button click event
   isClicked = false;
@@ -134,9 +135,11 @@ export class SavannaChildComponent implements OnInit, OnDestroy {
     let russianWords = [...this.russianWords];
 
     // find answer from english words array
-    this.answer = this.words.find((word) => {
-      return word.word === this.targetWord;
-    }).wordTranslate;
+    if (this.words !== undefined) {
+      this.answer = this.words.find((word) => {
+        return word.word === this.targetWord;
+      }).wordTranslate;
+    }
 
     // we should remove answer from russianWords, because it must not be duplicated in the options.
     russianWords.splice(
@@ -226,6 +229,7 @@ export class SavannaChildComponent implements OnInit, OnDestroy {
       answerTranslate: this.targetWord,
     };
     this.gameAnswer.audio = this.gameUtils.findAudio(this.answer, this.words);
+    this.gameAnswer.id = this.gameUtils.findId(this.answer, this.words);
     this.passAnswer.emit(this.gameAnswer);
   }
 }

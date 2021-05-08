@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { Group } from 'src/app/shared/types';
-import { IGameInfo } from '../../models/game.model';
+import { ActivatedRoute } from '@angular/router';
+import { first } from 'rxjs/operators';
+import { Group, Page } from 'src/app/shared/types';
+import { IGameInfo, IGameWordDirection } from '../../models/game.model';
 
 @Component({
   selector: 'app-game-first-modal',
@@ -8,16 +10,33 @@ import { IGameInfo } from '../../models/game.model';
   styleUrls: ['./game-first-modal.component.scss'],
 })
 export class GameFirstModalComponent implements OnInit {
-  @Output() passGameLevel = new EventEmitter<Group>();
+  @Output() passGameLevel = new EventEmitter<IGameWordDirection>();
   @Input() info!: IGameInfo;
-
   difficultyGroups = [1, 2, 3, 4, 5, 6];
+  randomPage = Math.floor(Math.random() * 20) as Page;
+  wordDirection: IGameWordDirection = { group: 0, page: 0 };
+  constructor(private route: ActivatedRoute) {}
 
-  constructor() {}
+  ngOnInit(): void {
+    this.getWordDirection();
+  }
 
-  ngOnInit(): void {}
+  chooseGameLevel(group: Group) {
+    this.wordDirection.group = group;
+    this.wordDirection.page = this.randomPage;
+    this.passGameLevel.emit(this.wordDirection);
+  }
 
-  chooseGameLevel(group: Number) {
-    this.passGameLevel.emit((+group - 1) as Group);
+  getWordDirection() {
+    this.route.paramMap.pipe(first()).subscribe((params) => {
+      this.wordDirection.group = +params.get('group') as Group;
+      this.wordDirection.page = +params.get('page') as Page;
+      console.log(this.wordDirection);
+      if (this.wordDirection.group && this.wordDirection.page) {
+        this.wordDirection.group--;
+        this.wordDirection.page--;
+        this.passGameLevel.emit(this.wordDirection);
+      }
+    });
   }
 }

@@ -12,6 +12,12 @@ export class GameUtilsService {
     return audioSrc;
   }
 
+  findId(answerWord: string, words: IWord[]) {
+    let id = words.find((word) => {
+      return word.wordTranslate === answerWord;
+    }).id;
+    return id;
+  }
   // we use this function to shuffle options and change words position in words arrray
   shuffleArray(array: string[]) {
     for (let i = array.length - 1; i > 0; i--) {

@@ -1,20 +1,19 @@
-import { Injectable } from "@angular/core";
-import { ApiService, LocalStorageService } from "../shared";
-import { IUserSetting } from "../shared/models";
-import { StateService } from "./state.service";
+import { Injectable } from '@angular/core';
+import { ApiService, LocalStorageService } from '../shared';
+import { IUserSetting } from '../shared/models';
+import { StateService } from './state.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SettingsFacade {
-  constructor(private stateService: StateService, private apiService: ApiService, private localStoage: LocalStorageService) { }
+  constructor(private stateService: StateService, private apiService: ApiService, private localStoage: LocalStorageService) {}
 
   readonly isTranslationDisplay$ = this.stateService.translationDisplay$;
   readonly isControlsDisplay$ = this.stateService.controlsDisplay$;
 
   loadUserSettings() {
     const translate = this.localStoage.getTranslateSetting();
-    console.log('translate', translate);
     if (translate) {
       this.stateService.setTranslationDisplay(translate);
     } else {
@@ -23,7 +22,6 @@ export class SettingsFacade {
     }
 
     const controls = this.localStoage.getControlsSetting();
-    console.log('controls', controls);
     if (controls) {
       this.stateService.setControlsDisplay(controls);
     } else {
@@ -33,7 +31,7 @@ export class SettingsFacade {
   }
 
   changeTranslateSetting() {
-    if(+this.localStoage.getTranslateSetting()) {
+    if (+this.localStoage.getTranslateSetting()) {
       this.localStoage.setTranslateDisplay(0);
     } else {
       this.localStoage.setTranslateDisplay(1);
@@ -42,7 +40,7 @@ export class SettingsFacade {
   }
 
   changeControlsSetting() {
-    if(+this.localStoage.getControlsSetting()) {
+    if (+this.localStoage.getControlsSetting()) {
       this.localStoage.setControlsSetting(0);
     } else {
       this.localStoage.setControlsSetting(1);
