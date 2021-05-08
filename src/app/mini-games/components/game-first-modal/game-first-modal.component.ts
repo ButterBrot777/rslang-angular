@@ -31,7 +31,6 @@ export class GameFirstModalComponent implements OnInit {
     this.route.paramMap.pipe(first()).subscribe((params) => {
       this.wordDirection.group = +params.get('group') as Group;
       this.wordDirection.page = +params.get('page') as Page;
-      console.log(this.wordDirection);
       if (this.wordDirection.group && this.wordDirection.page) {
         this.wordDirection.group--;
         this.wordDirection.page--;
