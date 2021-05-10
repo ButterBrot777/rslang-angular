@@ -31,10 +31,4 @@ export class GameResultsModalComponent implements OnInit {
   playWordAudio(audio: HTMLAudioElement) {
     audio.play();
   }
-
-  reload() {
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate([this.currentUrl]);
-    });
-  }
 }
