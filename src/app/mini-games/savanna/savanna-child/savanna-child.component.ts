@@ -135,7 +135,7 @@ export class SavannaChildComponent implements OnInit, OnDestroy {
     let russianWords = [...this.russianWords];
 
     // find answer from english words array
-    if (this.words !== undefined) {
+    if (this.words) {
       this.answer = this.words.find((word) => {
         return word.word === this.targetWord;
       }).wordTranslate;
