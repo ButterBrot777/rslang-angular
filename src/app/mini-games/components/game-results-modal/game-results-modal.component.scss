@@ -27,50 +27,32 @@
     color: black;
     height: 80vh;
     font-size: 20px;
+  }
 
-    .modal-content {
-      box-shadow: inset 3px 3px 3px 3px white;
-      border-radius: 5px;
+  .modal-content {
+    box-shadow: inset 3px 3px 3px 3px white;
+    border-radius: 5px;
+  }
 
-      .answers {
-        height: 40vh;
-        overflow: auto;
-        margin: 20px 0;
+  .answers {
+    height: 40vh;
+    overflow: auto;
+    margin: 20px 0;
 
-        .single-answer {
-          display: flex;
+    .single-answer {
+      display: flex;
+    }
+  }
 
-          //.answer {
-          //  text-align: left;
-          //  padding-left: 20px;
-          //}
+  .action-buttons {
+    display: flex;
+    justify-content: space-between;
 
-          //mat-icon {
-          //  display: block;
-          //  color: gainsboro;
-          //
-          //  &:hover {
-          //    cursor: pointer;
-          //  }
-          //
-          //  &:active {
-          //    opacity: 0.5;
-          //  }
-          //}
-        }
-      }
+    button {
+      margin: 10px;
 
-      .action-buttons {
-        display: flex;
-        justify-content: space-between;
-
-        button {
-          margin: 10px;
-
-          //a {
-          //  color: white;
-          //}
-        }
+      a {
+        color: white;
       }
     }
   }
