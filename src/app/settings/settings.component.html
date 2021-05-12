@@ -1,0 +1,44 @@
+<div class="settings">
+  <div class="back-button">
+    <button (click)="backToPreviousPage()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </div>
+
+  <div class="controls" *ngIf="settings$ | async as settings">
+    <h2 class="controls-title">Настройки</h2>
+
+    <mat-card class="control-translation">
+      <mat-card-content>
+        <h3 class="translation-subtitle">Хочу смотреть перевод</h3>
+
+        <section class="slider-section">
+          <mat-slide-toggle
+            class="slider-margin"
+            color="primary"
+            (toggleChange)="changeTranslationDisplay()"
+            [checked]="settings.translation"
+          >
+            <span *ngIf="settings.translation; else no">Да</span>
+            <ng-template #no><span>Нет</span></ng-template>
+          </mat-slide-toggle>
+        </section>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-divider></mat-divider>
+
+    <mat-card class="control-buttons">
+      <mat-card-content>
+        <h3 class="buttons-subtitle">Хочу добавлять слова в "Сложные" "Удаленные"</h3>
+
+        <section class="slider-section">
+          <mat-slide-toggle class="slider-margin" color="primary" [checked]="settings.controls" (toggleChange)="changeControlsDisplay()">
+            <span *ngIf="settings.controls; else no">Да</span>
+            <ng-template #no><span>Нет</span></ng-template>
+          </mat-slide-toggle>
+        </section>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

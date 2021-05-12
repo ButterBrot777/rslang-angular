@@ -1,0 +1,35 @@
+.about-us {
+  min-height: 84%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to top, #1d976c, #93f9b9);
+
+  .cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    mat-card {
+      width: 10rem;
+      margin: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 1rem;
+
+      img {
+        margin: 1rem 0;
+        max-height: 10rem;
+      }
+      a {
+        img {
+          width: 5rem;
+        }
+      }
+    }
+    mat-card:hover {
+      box-shadow: rgba(0, 0, 0, 0.52) 0px 8px 24px;
+    }
+  }
+}

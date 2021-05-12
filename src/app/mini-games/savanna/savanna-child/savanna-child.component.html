@@ -1,0 +1,10 @@
+<div class="savanna-game-wrapper">
+  <div class="target-word" [@moveTargetWord]="targetWordState">
+    {{ targetWord }}
+  </div>
+  <div class="option-words">
+    <div class="option-word" *ngFor="let option of options; let i = index">
+      <button (click)="checkOnClickEvent($event)" [disabled]="isClicked">{{ i + 1 }}. {{ option }}</button>
+    </div>
+  </div>
+</div>

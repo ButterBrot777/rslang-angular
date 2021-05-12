@@ -1,0 +1,58 @@
+.savanna-game-wrapper {
+  font-size: 1.25rem;
+  .target-word,
+  .option-words {
+    width: max-content;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+  }
+
+  .target-word {
+    top: 5%;
+    color: black;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .option-words {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    top: 75%;
+
+    .option-word {
+      button {
+        padding: 10px;
+        margin: 10px;
+        border-radius: 10px;
+        color: white;
+        background-color: black;
+        font-weight: bold;
+        font-size: 1.25rem;
+        border: 2px groove white;
+        &:disabled {
+          filter: brightness(10%);
+        }
+      }
+
+      button.correct {
+        border-color: green;
+        color: green;
+        &:disabled {
+          filter: brightness(100%);
+        }
+      }
+
+      button.incorrect {
+        border-color: red;
+        color: red;
+        &:disabled {
+          filter: brightness(100%);
+        }
+      }
+    }
+  }
+}

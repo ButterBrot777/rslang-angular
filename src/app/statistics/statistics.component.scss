@@ -1,0 +1,53 @@
+.control-section {
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media screen and (max-width: 1024px) {
+    padding-top: 0;
+  }
+}
+
+.container-chart {
+  display: flex;
+  justify-content: center;
+  width: 500px;
+  height: 450px;
+
+  &.error {
+    height: 415px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 90vw;
+  }
+}
+.statistics {
+  &__row {
+    background-color: var(--color-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3rem;
+    margin: 0;
+  }
+
+  &__title {
+    text-align: left;
+    margin-left: 1rem;
+  }
+
+  &__amount {
+    width: 6rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 750px) {
+  .statistics {
+    &__row {
+      width: 90vw;
+    }
+  }
+}

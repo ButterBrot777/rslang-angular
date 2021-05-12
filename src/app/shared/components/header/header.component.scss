@@ -1,0 +1,41 @@
+mat-toolbar {
+  height: 6%;
+
+  .logo {
+    display: inline;
+    margin-right: 1rem;
+    outline: none;
+    cursor: pointer;
+  }
+  .logo:hover {
+    transform: scale(1.05);
+  }
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  mat-nav-list {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .mat-list-base {
+    padding-top: 0;
+  }
+
+  mat-icon:hover {
+    transform: scale(1.05);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  mat-toolbar {
+    height: unset;
+    align-items: flex-start;
+    mat-nav-list {
+      // flex-direction: column;
+      flex-wrap: wrap;
+    }
+  }
+}

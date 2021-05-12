@@ -1,0 +1,38 @@
+<div class="results-modal">
+  <div class="modal-window">
+    <div class="modal-content">
+      <h1>Pезультат</h1>
+      <div class="specific-parts">{{ specificParts }}</div>
+      <div class="feedback">
+        <h2>{{ feedback }}</h2>
+      </div>
+      <div class="statistics">{{ correct }} слов изучено, {{ incorrect }} не изучено.</div>
+      <div class="answers">
+        <h2>ОШИБОК: {{ incorrect }}</h2>
+        <div class="incorrect-answers" *ngFor="let answer of data.incorrectAnswers; let i = index">
+          <div class="single-answer">
+            <audio #incorrectAnswerAudio src="https://dispet.github.io/rslang-data/{{ data.incorrectAnswerAudios[i] }}"></audio>
+            <mat-icon style="color: red" (click)="playWordAudio(incorrectAnswerAudio)">volume_up</mat-icon>
+            <div class="answer" style="color: red">
+              <b>{{ data.incorrectAnswersTranslate[i] }}</b> - {{ answer }}
+            </div>
+          </div>
+        </div>
+        <h2>ЗНАЮ: {{ correct }}</h2>
+        <div class="correct-answers" *ngFor="let answer of data.correctAnswers; let i = index">
+          <div class="single-answer">
+            <audio #correctAnswerAudio src="https://dispet.github.io/rslang-data/{{ data.correctAnswerAudios[i] }}"></audio>
+            <mat-icon style="color: green" (click)="playWordAudio(correctAnswerAudio)">volume_up</mat-icon>
+            <div style="color: green" class="answer">
+              <b>{{ data.correctAnswersTranslate[i] }}</b> - {{ answer }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button mat-raised-button color="primary"><a routerLink="">На главную</a></button>
+      </div>
+    </div>
+  </div>
+</div>

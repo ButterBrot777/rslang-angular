@@ -1,0 +1,15 @@
+<app-header></app-header>
+<div class="mini-games">
+  <div class="game-cards">
+    <mat-card *ngFor="let game of gameNames">
+      <mat-card-header>
+        <mat-card-title>{{ game.label }}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="../../assets/icons/{{ game.name }}.svg" alt="{{ game.label }}" />
+      <mat-card-actions>
+        <button mat-button routerLink="{{ game.name }}">Играть</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+<router-outlet></router-outlet>

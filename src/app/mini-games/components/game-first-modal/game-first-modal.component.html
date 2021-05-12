@@ -1,0 +1,15 @@
+<div class="first-modal">
+  <div class="modal-window">
+    <div class="game-info">
+      <h1 class="title">{{ info.name }}</h1>
+      <div class="info">{{ info.info }}</div>
+    </div>
+    <hr />
+    <div>
+      <p>Выберите уровень</p>
+      <div class="choose-difficulty-level">
+        <button *ngFor="let group of difficultyGroups" (click)="chooseGameLevel(group)">{{ group }}</button>
+      </div>
+    </div>
+  </div>
+</div>

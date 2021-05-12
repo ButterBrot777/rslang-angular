@@ -1,0 +1,22 @@
+<div class="savanna-game" [ngStyle]="backgroundPositionY">
+  <app-game-first-modal (passGameLevel)="beginTheGame($event)" *ngIf="displayFirstModal" [info]="gameInfo"></app-game-first-modal>
+  <app-game-results-modal [data]="game" *ngIf="displayResultsModal"></app-game-results-modal>
+  <div class="savanna-wrapper" *ngIf="!isGameOver && (words$ | async) as words" [ngStyle]="savannaWrapperHeight">
+    <div class="control">
+      <div class="hearts" *ngFor="let heart of heartsCount">
+        <div class="heart" [@flyTopDown]="'top'">
+          <mat-icon>favorite</mat-icon>
+        </div>
+      </div>
+      <div class="exit">
+        <button><a routerLink="">&times;</a></button>
+      </div>
+    </div>
+    <app-savanna-child
+      (isGameEnd)="endGame($event)"
+      (passAnswer)="recieveAnswer($event)"
+      [heartsCount]="heartsCount.length"
+      [words]="words"
+    ></app-savanna-child>
+  </div>
+</div>

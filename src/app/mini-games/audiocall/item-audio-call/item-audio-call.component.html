@@ -1,0 +1,16 @@
+<div>
+  <button mat-icon-button (click)="playAudio(word.audio)">
+    <mat-icon mat-list-icon>volume_up</mat-icon>
+  </button>
+  <span [ngClass]="isCorrect === 1 ? 'green' : 'red'">{{ correctAnswer }}</span>
+  <hr />
+  <button
+    *ngFor="let variant of getVariantsRu; let i = index"
+    mat-raised-button
+    color="basic"
+    [disabled]="isAnswerButtonDisable"
+    (click)="sendResult(variant)"
+  >
+    {{ variant }}
+  </button>
+</div>

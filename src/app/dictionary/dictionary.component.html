@@ -1,0 +1,11 @@
+<div class="dictionary">
+  <div class="navigation">
+    <mat-button-toggle-group>
+      <mat-button-toggle value="app-words-in-learning" routerLink="/dictionary/words-in-learning">Изучаемые слова</mat-button-toggle>
+      <mat-button-toggle value="app-hard-words" routerLink="/dictionary/hard-words">Сложные слова</mat-button-toggle>
+      <mat-button-toggle value="app-deleted-words" routerLink="/dictionary/deleted-words">Удаленный слова</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <mat-divider></mat-divider>
+  <router-outlet></router-outlet>
+</div>

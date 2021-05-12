@@ -1,0 +1,19 @@
+.dictionary {
+  min-height: 84%;
+
+  .navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    mat-button-toggle-group {
+      margin: 0 0.5rem;
+      flex-grow: 1;
+      mat-button-toggle {
+        flex-grow: 1;
+        font-size: 1rem;
+        font-weight: 700;
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+<div class="control-section">
+  <ng-container *ngIf="isStatistics; else noStatistics">
+    <mat-tab-group class="statistics" mat-align-tabs="center" [ngStyle]="{ 'background-color': '#fdfdfd', 'max-width': '95vw' }">
+      <mat-tab *ngFor="let statistics of data" label="{{ statistics.nameMiniGame }}">
+        <p class="statistics__row">
+          <span class="statistics__title">Изученные слова за день</span>
+          <span class="statistics__amount">{{ statistics.learnedWordsPerDay }}</span>
+        </p>
+        <mat-divider></mat-divider>
+        <p class="statistics__row">
+          <span class="statistics__title">Процент правильных ответов за день</span>
+          <span class="statistics__amount">
+            {{ statistics.rightWords / (statistics.rightWords + statistics.wrongWords) | percent: "1.0-2" }}
+          </span>
+        </p>
+        <mat-divider></mat-divider>
+        <p class="statistics__row" *ngIf="statistics.maxSeries">
+          <span class="statistics__title">Cамая длинная серия правильных ответов за день</span>
+          <span class="statistics__amount">{{ statistics.maxSeries }}</span>
+        </p>
+        <mat-divider></mat-divider>
+      </mat-tab>
+    </mat-tab-group>
+    <ejs-chart
+      id="chart-containerAmount"
+      class="container-chart"
+      [primaryXAxis]="primaryXAxis"
+      [primaryYAxis]="primaryYAxis"
+      [title]="titleAmount"
+    >
+      <e-series-collection>
+        <e-series [dataSource]="chartData" type="Line" xName="x" yName="y"></e-series>
+      </e-series-collection>
+    </ejs-chart>
+    <ejs-chart
+      id="chart-containerIncrease"
+      class="container-chart"
+      [primaryXAxis]="primaryXAxis"
+      [primaryYAxis]="primaryZAxis"
+      [title]="titleIncrease"
+    >
+      <e-series-collection>
+        <e-series [dataSource]="chartData" type="Line" xName="x" yName="z"></e-series>
+      </e-series-collection>
+    </ejs-chart>
+  </ng-container>
+  <ng-template #noStatistics>
+    <p>У вас еще нет статистики. Поиграйте в мини-игры для тренировки английских слов и отображения статистики.</p>
+  </ng-template>
+</div>

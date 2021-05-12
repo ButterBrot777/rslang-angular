@@ -1,0 +1,15 @@
+<app-header></app-header>
+<div *ngIf="words; else loading">
+  <mat-tab-group dynamicHeight>
+    <mat-tab label="{{ i + 1 }}" *ngFor="let word of words; let i = index">
+      <div class="example-large-box mat-elevation-z4">
+        <app-item-audio-call [word]="word" [getVariantsRu]="rusVariantsSubArray[i]" (answer)="getAnswer($event)"></app-item-audio-call>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  <div>
+    <h3>Результат: {{ resultCounter }} / {{ MAX_WORDS_COUNT }}</h3>
+  </div>
+</div>
+<button *ngIf="answersCounter === MAX_WORDS_COUNT" mat-raised-button color="primary" (click)="sendStatistic()">Сохранить результат</button>
+<ng-template #loading>Слова не загрузились</ng-template>

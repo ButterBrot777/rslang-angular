@@ -1,0 +1,40 @@
+.settings {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+
+  .back-button {
+    padding: 2rem 0;
+
+    button {
+      height: 100%;
+    }
+  }
+
+  .controls {
+    padding: 2rem;
+    flex-grow: 1;
+
+    &-title {
+      margin-left: 1rem;
+    }
+
+    .translation-subtitle,
+    .buttons-subtitle {
+      margin: 1rem;
+    }
+
+    .eslider-section {
+      height: 3rem;
+      margin-left: 1rem;
+      display: flex;
+      align-content: center;
+      align-items: center;
+    }
+
+    .slider-margin {
+      margin: 10px;
+    }
+  }
+}

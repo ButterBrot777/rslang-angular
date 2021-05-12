@@ -1,0 +1,11 @@
+<app-header></app-header>
+<div class="mini-games">
+  <div class="game-cards">
+    <mat-card *ngFor="let group of groupsAmount">
+      <img mat-card-image src="../../assets/icons/level_{{ group }}.svg" alt="Уровень {{ group }}" />
+      <mat-card-actions>
+        <button mat-button [routerLink]="['/mini-games', 'audio-call', group]">Выбрать</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

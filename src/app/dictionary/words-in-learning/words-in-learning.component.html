@@ -1,0 +1,17 @@
+<div *ngIf="(wordsInLearning$ | async)?.length == 0">
+  <h3>Страница пуста</h3>
+</div>
+
+<ng-template #content>
+  <mat-list>
+    <mat-list-item *ngFor="let item of wordsInLearning$ | async">
+      <p matLine>
+        <span style="flex-grow: 1">{{ item.word }} - {{ item.wordTranslate }}</span>
+        <span *ngIf="item.hard" class="hard-indicator">HARD</span>
+      </p>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</ng-template>
+
+<mat-spinner *ngIf="isLoading$ | async; else content"></mat-spinner>

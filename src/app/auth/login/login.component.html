@@ -1,0 +1,32 @@
+<app-header></app-header>
+
+<div class="main-container">
+  <form [formGroup]="form" (ngSubmit)="submit()" class="card">
+    <h2>Login</h2>
+
+    <div class="form-container">
+      <div class="alert alert-danger" *ngIf="message">{{ message }}</div>
+
+      <mat-form-field>
+        <input id="email" matInput placeholder="Email адрес" formControlName="email" required />
+        <div class="errors-container" *ngIf="form.get('email').touched && form.get('email').invalid">
+          <mat-error *ngIf="form.get('email').hasError('required')"> Поле "Почта" обязательно </mat-error>
+          <mat-error *ngIf="form.get('email').hasError('email')"> Введите поле "Почта" в формате email@email.com </mat-error>
+        </div>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Новый пароль" [type]="hide ? 'password' : 'text'" formControlName="password" required />
+        <mat-icon matSuffix (click)="hide = !hide">{{ hide ? "visibility" : "visibility_off" }}</mat-icon>
+
+        <div class="errors-container" *ngIf="form.get('password').touched && form.get('password').invalid">
+          <mat-error *ngIf="form.get('password').hasError('required')"> Поле "Пароль" обязательно </mat-error>
+        </div>
+      </mat-form-field>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid || submitted">Log In</button>
+  </form>
+</div>
+
+<app-footer></app-footer>

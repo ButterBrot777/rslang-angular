@@ -1,0 +1,62 @@
+<button type="button" mat-button (click)="drawer.toggle()">Выбрать игру</button>
+
+<mat-drawer-container>
+  <mat-drawer #drawer position="end">
+    <mat-button-toggle-group vertical>
+      <mat-button-toggle>Саванна</mat-button-toggle>
+      <mat-button-toggle>Аудиовызов</mat-button-toggle>
+      <mat-button-toggle>Спринт</mat-button-toggle>
+      <mat-button-toggle>Своя игра</mat-button-toggle>
+    </mat-button-toggle-group>
+  </mat-drawer>
+
+  <div *ngIf="(hardWords$ | async)?.length == 0">
+    <h3>Страница пуста</h3>
+  </div>
+
+  <ng-template #content>
+    <ul class="list">
+      <li *ngFor="let item of hardWords$ | async" class="list-item">
+        <div class="list-item-container">
+          <div class="item-image">
+            <img src="{{ url }}/{{ item.image }}" alt="{{ item.word }}" />
+          </div>
+          <div class="item-content">
+            <div class="item-title">
+              <button mat-icon-button (click)="playAudio(item.audio, item.audioMeaning, item.audioExample)">
+                <mat-icon mat-list-icon>volume_up</mat-icon>
+              </button>
+              <span>
+                {{ item.word }}
+              </span>
+              <span>: {{ item.transcription }}</span>
+              <span> - {{ item.wordTranslate }}</span>
+            </div>
+            <div class="item-description">
+              <p>
+                <span [innerHTML]="item.textMeaning"></span>
+                <span> - {{ item.textMeaningTranslate }}</span>
+              </p>
+              <p>
+                <span [innerHTML]="item.textExample"></span>
+                <span> - {{ item.textExampleTranslate }}</span>
+              </p>
+              <p>
+                {{ item.learningResults }}
+              </p>
+            </div>
+          </div>
+
+          <div class="item-controls">
+            <button (click)="deleteWord(item._id)">
+              <mat-icon>restore_from_trash</mat-icon>
+            </button>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+      </li>
+    </ul>
+  </ng-template>
+
+  <mat-spinner *ngIf="isLoading$ | async; else content"></mat-spinner>
+</mat-drawer-container>

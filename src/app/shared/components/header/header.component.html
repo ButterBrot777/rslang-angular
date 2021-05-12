@@ -1,0 +1,23 @@
+<mat-toolbar>
+  <span class="logo" routerLink="">RS Lang</span>
+  <mat-nav-list>
+    <a mat-list-item routerLink="/text-book"> Электронный учебник </a>
+    <a mat-list-item routerLink="/mini-games">Мини-игры</a>
+    <a *ngIf="isLogin" mat-list-item routerLink="/statistics">Статистика</a>
+    <a mat-list-item routerLink="/about-us">О нас</a>
+  </mat-nav-list>
+  <span class="example-spacer"></span>
+  <div *ngIf="!isLogin">
+    <button mat-icon-button color="primary" routerLink="/registration" title="Зарегистрироваться">
+      <mat-icon>app_registration</mat-icon>
+    </button>
+    <button mat-icon-button color="primary" routerLink="/login" title="Войти" *ngIf="!isLogin">
+      <mat-icon>login</mat-icon>
+    </button>
+  </div>
+  <div>
+    <button *ngIf="isLogin" mat-icon-button color="primary" title="Выйти">
+      <mat-icon (click)="logout()">logout</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

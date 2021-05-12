@@ -1,0 +1,23 @@
+//::ng-deep .mat-form-field-subscript-wrapper {
+//  position: relative !important;
+//  margin: 0;
+//}
+//::ng-deep .mat-form-field-flex {
+//  margin: 0;
+//}
+mat-form-field {
+  display: block;
+  margin-bottom: 0;
+}
+
+.form-container {
+  width: 320px;
+}
+
+.errors-container {
+  margin-top: 1rem;
+}
+pre {
+  margin: 0;
+  display: inline;
+}

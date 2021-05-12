@@ -1,0 +1,47 @@
+.mini-games {
+  height: 84%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to left, #0f46e4, #0fa5e4);
+
+  .game-cards {
+    max-width: 50rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    mat-card {
+      max-width: 20rem;
+      margin: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      border-radius: 1rem;
+
+      &-header {
+        align-self: center;
+      }
+
+      img {
+        max-height: 10rem;
+      }
+
+      &-actions {
+        display: flex;
+        justify-content: center;
+      }
+    }
+    mat-card:hover {
+      box-shadow: rgba(0, 0, 0, 0.52) 0 8px 24px;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .mini-games {
+    height: unset;
+    min-height: 84%;
+    // flex-direction: column;
+  }
+}

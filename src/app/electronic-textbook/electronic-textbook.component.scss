@@ -1,0 +1,39 @@
+.text-book {
+  height: 84%;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(to top, #5433ff, #20bdff, #a5fecb);
+
+  mat-card {
+    align-self: center;
+    max-width: 20rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+
+    &-header {
+      align-self: center;
+    }
+
+    img {
+      max-height: 10rem;
+    }
+
+    &-actions {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  mat-card:hover {
+    box-shadow: rgba(5, 5, 5, 0.2) 0px 8px 24px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .text-book {
+    height: unset;
+    min-height: 84%;
+    flex-direction: column;
+  }
+}
