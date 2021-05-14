@@ -1,6 +1,5 @@
 .savanna-game-wrapper {
   font-size: 1.25rem;
-
   .target-word,
   .option-words {
     width: max-content;
@@ -31,12 +30,8 @@
         border-radius: 10px;
         color: white;
         background-color: black;
-        font: {
-          weight: bold;
-          size: 1.25rem;
-        }
-
-        transition: color, background-color 0.5s 0.1s ease-in;
+        font-weight: bold;
+        font-size: 1.25rem;
         border: 2px groove white;
         &:disabled {
           filter: brightness(10%);

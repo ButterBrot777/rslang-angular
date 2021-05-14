@@ -9,6 +9,7 @@ import { MainTypeMeComponent } from './type-me/main-type-me/main-type-me.compone
 
 const routes: Routes = [
   { path: 'savanna', component: SavannaComponent },
+  { path: 'savanna/:group/:page', component: SavannaComponent },
   { path: 'audio-call', component: MainAudioCallComponent },
   { path: 'audio-call/:group', component: AudioCallComponent },
   { path: 'audio-call/:group/:page', component: AudioCallComponent },

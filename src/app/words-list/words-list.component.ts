@@ -95,32 +95,36 @@ export class WordsListComponent implements OnInit, OnDestroy {
   isCorrectPassedGroupAndPage(group: string, page: string): boolean {
     const isCorrectGroup = !isNaN(this.convertToNum(group)) ? this.checkGroupRange(group) : false;
     const isCorrectPage = !isNaN(this.convertToNum(page)) ? this.checkPageRange(page) : false;
-    if(isCorrectGroup && isCorrectPage) return true;
+    if (isCorrectGroup && isCorrectPage) return true;
     return false;
   }
 
   checkGroupRange(group: string): boolean {
     const groupNum = this.convertToNum(group);
-    return (groupNum >= this.MIN_GROUP_COUNT) && (groupNum <= this.MAX_GROUP_COUNT);
+    return groupNum >= this.MIN_GROUP_COUNT && groupNum <= this.MAX_GROUP_COUNT;
   }
 
   checkPageRange(page: string): boolean {
     const pageNum = this.convertToNum(page);
-    return (pageNum >= this.MIN_PAGE_COUNT) && (pageNum <= this.MAX_PAGE_COUNT);
+    return pageNum >= this.MIN_PAGE_COUNT && pageNum <= this.MAX_PAGE_COUNT;
   }
 
-
   loadDataFromRoute(direction: string) {
-    this.route.params.pipe(switchMap((params) => {
-      if(this.isCorrectPassedGroupAndPage(params['group'], params['page'])) {
-        this.group = params['group'];
-        this.page = params['page'];
-        return this.stateFacade.loadListWords(this.group, this.page, direction);
-      } else {
-        this.setRouteValuesInWrongCase();
-        return EMPTY;
-      }
-    }), takeUntil(this.destroy$)).subscribe();
+    this.route.params
+      .pipe(
+        switchMap((params) => {
+          if (this.isCorrectPassedGroupAndPage(params['group'], params['page'])) {
+            this.group = params['group'];
+            this.page = params['page'];
+            return this.stateFacade.loadListWords(this.group, this.page, direction);
+          } else {
+            this.setRouteValuesInWrongCase();
+            return EMPTY;
+          }
+        }),
+        takeUntil(this.destroy$),
+      )
+      .subscribe();
   }
 
   loadUserWords() {
@@ -150,10 +154,6 @@ export class WordsListComponent implements OnInit, OnDestroy {
   }
 
   goGame(gameName: string) {
-    if (gameName === 'savanna') {
-      this.router.navigate(['/mini-games/savanna']);
-      return;
-    }
     this.router.navigate(['/mini-games', gameName, this.group, this.page]);
   }
 }

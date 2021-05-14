@@ -14,5 +14,6 @@ export const moveTargetWord = trigger('moveTargetWord', [
 
 export const flyTopDown = trigger('flyTopDown', [
   state('top', style({ transform: 'translateY(0)' })),
-  transition('void <=> *', [style({ top: '-100%', fontSize: '50px', color: 'blue' }), animate(500)]),
+  state('void', style({ marginTop: '100px' })),
+  transition('void <=> top', [style({ marginTop: '0px' }), animate(1000)]),
 ]);
